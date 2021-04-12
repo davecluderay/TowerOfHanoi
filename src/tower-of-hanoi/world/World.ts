@@ -1,4 +1,4 @@
-import { PerspectiveCamera, Scene, WebGLRenderer } from 'three';
+import { PerspectiveCamera, Scene, Vector3, WebGLRenderer } from 'three';
 
 import { createCamera } from './camera';
 import { createLights } from './lights';
@@ -8,7 +8,8 @@ import { createRenderer } from './renderer';
 import { Resizer } from './Resizer';
 import { Loop } from './Loop';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { createCube } from './cube';
+import { createDiscs } from './disc';
+import { createBases } from './base';
 
 export type WorldOptions = {
   container: HTMLElement;
@@ -29,7 +30,6 @@ class World {
     this.renderer = createRenderer();
 
     const container = options.container;
-
     while (container.firstChild) container.removeChild(container.firstChild);
     container.append(this.renderer.domElement);
 
@@ -40,12 +40,8 @@ class World {
     this.controls = createControls(this.camera, this.renderer.domElement);
     this.controls.addEventListener('change', () => this.render());
 
-    const cube = createCube();
-    this.scene.add(cube);
-
-    this.loop.updaters.push(cube, this.camera, this.controls);
-
-    this.scene.add(...lights);
+    this.scene.add(...createDiscs(), ...createBases(), ...lights);
+    this.loop.updaters.push(this.camera, this.controls);
 
     this.resizer = new Resizer(container, this.camera, this.renderer);
   }

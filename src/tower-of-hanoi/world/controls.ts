@@ -1,5 +1,6 @@
-import { Camera } from 'three';
+import { Camera, Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { baseHeight, baseXPositions } from './options';
 
 function createControls(camera: Camera, element: HTMLElement) {
   const controls = new OrbitControls(camera, element);
@@ -10,6 +11,9 @@ function createControls(camera: Camera, element: HTMLElement) {
   Object.assign(controls, {
     tick: (delta: number) => controls.update(),
   });
+
+  const center = new Vector3(baseXPositions[1], baseHeight / 2, 0);
+  controls.target = center;
 
   return controls;
 }
