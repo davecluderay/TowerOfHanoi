@@ -1,6 +1,6 @@
-type Move = { from: number; to: number };
-type DiscPosition = { base: number; level: number };
-type DetailedMove = { disc: number; from: DiscPosition; to: DiscPosition };
+export type Move = { from: number; to: number };
+export type DiscPosition = { base: number; level: number };
+export type DetailedMove = { disc: number; from: DiscPosition; to: DiscPosition };
 
 export function createDetailedSolution(discCount: number): DetailedMove[] {
   const runningCounts = [discCount, 0, 0];
