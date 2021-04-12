@@ -1,4 +1,4 @@
-import { PerspectiveCamera, Scene, Vector3, WebGLRenderer } from 'three';
+import { PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
 import { createCamera } from './camera';
 import { createLights } from './lights';
@@ -10,6 +10,11 @@ import { Loop } from './Loop';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { createCube } from './cube';
 
+export type WorldOptions = {
+  container: HTMLElement;
+  showStats?: boolean | undefined;
+};
+
 class World {
   private camera: PerspectiveCamera;
   private scene: Scene;
@@ -18,16 +23,17 @@ class World {
   private loop: Loop;
   private controls: OrbitControls;
 
-  constructor(container: HTMLElement) {
+  constructor(options: WorldOptions) {
     this.camera = createCamera();
     this.scene = createScene();
     this.renderer = createRenderer();
 
-    this.loop = new Loop(this.camera, this.scene, this.renderer);
+    const container = options.container;
 
     while (container.firstChild) container.removeChild(container.firstChild);
-
     container.append(this.renderer.domElement);
+
+    this.loop = new Loop(this.camera, this.scene, this.renderer, options.showStats);
 
     const lights = createLights();
 

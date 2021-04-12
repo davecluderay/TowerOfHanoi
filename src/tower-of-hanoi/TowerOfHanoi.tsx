@@ -5,9 +5,12 @@ const TowerOfHanoi = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   useLayoutEffect(() => {
     const container = containerRef.current;
-    if (container === null) return;
+    if (!container === null) return;
 
-    const world = new World(containerRef.current as HTMLDivElement);
+    const world = new World({
+      container: containerRef.current as HTMLElement,
+      showStats: true,
+    });
 
     world.init().then(
       () => world.start(),
