@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CSSProperties } from 'react';
+import { TowerOfHanoi } from './tower-of-hanoi/TowerOfHanoi';
 
 function App() {
+  const headerStyle: CSSProperties = {
+    color: '#f0f0f0',
+    fontFamily: 'sans-serif',
+    textAlign: 'center',
+    position: 'relative',
+    zIndex: 99,
+  };
+  const sectionStyle: CSSProperties = {
+    position: 'fixed',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle, rgba(68,68,68,1) 0%, rgba(34,34,34,1) 50%, rgba(0,0,0,1) 100%)',
+    zIndex: 0,
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header style={headerStyle}>
+        <h1>Tower of Hanoi</h1>
       </header>
-    </div>
+      <section style={sectionStyle}>
+        <TowerOfHanoi />
+      </section>
+    </>
   );
 }
 
