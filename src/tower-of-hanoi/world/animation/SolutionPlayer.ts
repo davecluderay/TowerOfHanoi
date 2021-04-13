@@ -3,27 +3,53 @@ import { DetailedMove } from '../../solver';
 import { Animation, createMoveAnimations } from './animation';
 
 class SolutionPlayer {
-  private isRunning: boolean;
+  private runState: 'stopped' | 'paused' | 'playing';
   private animations: Animation[];
   private currentIndex: number;
 
   constructor(moves: DetailedMove[], discs: Object3D[]) {
-    this.isRunning = false;
+    this.runState = 'stopped';
     this.animations = createMoveAnimations(moves, discs);
-    this.currentIndex = -1;
-  }
-
-  play(): void {
     this.currentIndex = 0;
-    this.isRunning = true;
   }
 
-  pause(): void {
-    this.isRunning = false;
+  // TODO: Expose more advanced controls, e.g. setDirection(), setSpeed()
+
+  public reset() {
+    this.currentIndex = 0;
+    for (let i = this.animations.length - 1; i >= 0; i--) {
+      this.animations[i].reset();
+    }
   }
 
-  tick(delta: number): void {
-    if (!this.isRunning || this.currentIndex >= this.animations.length) return;
+  public play(): void {
+    this.runState = 'playing';
+  }
+
+  public pause() {
+    this.runState = 'paused';
+  }
+
+  public stop(): void {
+    this.pause();
+    this.reset();
+    this.runState = 'stopped';
+  }
+
+  public isPlaying() {
+    return this.runState === 'playing';
+  }
+
+  public isPaused() {
+    return this.runState === 'paused';
+  }
+
+  public isStopped() {
+    return this.runState === 'stopped';
+  }
+
+  public tick(delta: number): void {
+    if (!this.isPlaying() || this.currentIndex >= this.animations.length) return;
 
     const current = this.animations[this.currentIndex];
 

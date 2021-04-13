@@ -4,6 +4,7 @@ import { baseHeight, baseXPositions, discThickness, moveAnimationDurationMs } fr
 
 export interface Animation {
   isDone: boolean;
+  reset(): void;
   tick(delta: number): void;
 }
 
@@ -23,6 +24,10 @@ function createInitAnimation(discs: Object3D[], base: number): Animation {
       super();
       this.discs = discs;
       this.base = base;
+    }
+
+    public reset(): void {
+      this.isDone = false;
     }
 
     public tick(delta: number): void {
@@ -62,6 +67,13 @@ function createMoveAnimation(move: DetailedMove, discs: Object3D[]): Animation {
         liftTo: baseHeight + discThickness * 3,
         end: move.to.level * discThickness,
       };
+    }
+
+    public reset(): void {
+      this.elapsedMs = 0;
+      this.disc.position.x = this.xParams.start;
+      this.disc.position.y = this.yParams.start;
+      this.isDone = false;
     }
 
     public tick(delta: number): void {

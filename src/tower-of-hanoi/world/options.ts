@@ -22,6 +22,7 @@ export const discThickness = 0.5;
 export const moveAnimationDurationMs = 600;
 export const poleBevelSize = 0.125;
 export const poleRadius = 0.5;
+export const showStats = false;
 export const smallestDiscRadius = 1.25;
 export const largestDiscRadius = smallestDiscRadius + (numberOfDiscs - 1) * discRadiusDelta;
 

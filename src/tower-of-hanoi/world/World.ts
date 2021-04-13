@@ -3,7 +3,7 @@ import { Light, Object3D, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
 import { createCamera } from './components/camera';
 import { createLights } from './components/light';
 import { createScene } from './components/scene';
-import { createControls } from './interaction/controls';
+import { createCameraControls } from './interaction/cameraControls';
 import { createRenderer } from './rendering/renderer';
 import { Resizer } from './interaction/Resizer';
 import { Loop } from './rendering/Loop';
@@ -11,12 +11,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { createDiscs } from './components/disc';
 import { createBases } from './components/base';
 import { createDetailedSolution } from '../solver';
-import { numberOfDiscs } from './options';
+import { numberOfDiscs, showStats } from './options';
 import { SolutionPlayer } from './animation/SolutionPlayer';
 
 export type WorldOptions = {
   container: HTMLElement;
-  showStats?: boolean | undefined;
 };
 
 class World {
@@ -44,9 +43,9 @@ class World {
     while (container.firstChild) container.removeChild(container.firstChild);
     container.append(this.renderer.domElement);
 
-    this.loop = new Loop(this.camera, this.scene, this.renderer, options.showStats);
+    this.loop = new Loop(this.camera, this.scene, this.renderer, showStats);
 
-    this.controls = createControls(this.camera, this.renderer.domElement);
+    this.controls = createCameraControls(this.camera, this.renderer.domElement);
     this.controls.addEventListener('change', () => this.render());
 
     this.scene.add(...this.bases, ...this.discs, ...this.lights);
@@ -62,8 +61,20 @@ class World {
   }
 
   public start() {
+    this.player.reset();
     this.loop.start();
-    this.player.play();
+  }
+
+  public getPlaybackControls() {
+    return {
+      reset: () => this.player.reset(),
+      play: () => this.player.play(),
+      pause: () => this.player.pause(),
+      stop: () => this.player.stop(),
+      isPlaying: () => this.player.isPlaying(),
+      isPaused: () => this.player.isPaused(),
+      isStopped: () => this.player.isStopped(),
+    };
   }
 
   public stop() {
