@@ -1,8 +1,8 @@
 import { Object3D } from 'three';
-import { DetailedMove } from '../solver';
+import { DetailedMove } from '../../solver';
 import { Animation, createMoveAnimations } from './animation';
 
-class MovePlayer {
+class SolutionPlayer {
   private isRunning: boolean;
   private animations: Animation[];
   private currentIndex: number;
@@ -33,4 +33,4 @@ class MovePlayer {
   }
 }
 
-export { MovePlayer };
+export { SolutionPlayer };

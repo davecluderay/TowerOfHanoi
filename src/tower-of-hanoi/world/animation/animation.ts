@@ -1,6 +1,6 @@
 import { Object3D } from 'three';
-import { DetailedMove } from '../solver';
-import { baseHeight, baseXPositions, discThickness, moveAnimationDurationMs } from './options';
+import { DetailedMove } from '../../solver';
+import { baseHeight, baseXPositions, discThickness, moveAnimationDurationMs } from '../options';
 
 export interface Animation {
   isDone: boolean;

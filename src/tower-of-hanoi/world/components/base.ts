@@ -9,7 +9,7 @@ import {
   baseXPositions,
   poleBevelSize,
   poleRadius,
-} from './options';
+} from '../options';
 
 function createBaseMaterial(color: number): MeshStandardMaterial {
   return new MeshStandardMaterial({

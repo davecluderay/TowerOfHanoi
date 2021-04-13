@@ -8,7 +8,7 @@ import {
   numberOfDiscs,
   poleRadius,
   smallestDiscRadius,
-} from './options';
+} from '../options';
 
 function createDiscMaterial(color: number): MeshStandardMaterial {
   return new MeshStandardMaterial({

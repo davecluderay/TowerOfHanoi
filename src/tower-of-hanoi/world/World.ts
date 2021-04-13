@@ -1,18 +1,18 @@
 import { Light, Object3D, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
-import { createCamera } from './camera';
-import { createLights } from './light';
-import { createScene } from './scene';
-import { createControls } from './controls';
-import { createRenderer } from './renderer';
-import { Resizer } from './Resizer';
-import { Loop } from './Loop';
+import { createCamera } from './components/camera';
+import { createLights } from './components/light';
+import { createScene } from './components/scene';
+import { createControls } from './interaction/controls';
+import { createRenderer } from './rendering/renderer';
+import { Resizer } from './interaction/Resizer';
+import { Loop } from './rendering/Loop';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { createDiscs } from './disc';
-import { createBases } from './base';
+import { createDiscs } from './components/disc';
+import { createBases } from './components/base';
 import { createDetailedSolution } from '../solver';
 import { numberOfDiscs } from './options';
-import { MovePlayer } from './MovePlayer';
+import { SolutionPlayer } from './animation/SolutionPlayer';
 
 export type WorldOptions = {
   container: HTMLElement;
@@ -26,7 +26,7 @@ class World {
   private lights: Light[];
   private bases: Object3D[];
   private discs: Object3D[];
-  private player: MovePlayer;
+  private player: SolutionPlayer;
   private loop: Loop;
   private resizer: Resizer;
   private controls: OrbitControls;
@@ -38,7 +38,7 @@ class World {
     this.lights = createLights();
     this.bases = createBases();
     this.discs = createDiscs();
-    this.player = new MovePlayer(createDetailedSolution(numberOfDiscs), this.discs);
+    this.player = new SolutionPlayer(createDetailedSolution(numberOfDiscs), this.discs);
 
     const container = options.container;
     while (container.firstChild) container.removeChild(container.firstChild);

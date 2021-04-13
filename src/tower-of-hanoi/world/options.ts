@@ -11,7 +11,7 @@ const colors = {
   greenRYB: 0x6ab547,
 };
 
-export const numberOfDiscs = 5;
+export const numberOfDiscs = 7;
 export const baseBevelSize = 0.1;
 export const baseColor = 0x818aa3;
 export const baseSpacing = 0.5;

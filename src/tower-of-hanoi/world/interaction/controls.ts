@@ -1,6 +1,6 @@
 import { Camera, Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { baseHeight, baseXPositions } from './options';
+import { baseHeight, baseXPositions } from '../options';
 
 function createControls(camera: Camera, element: HTMLElement) {
   const controls = new OrbitControls(camera, element);
