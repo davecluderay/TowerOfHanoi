@@ -37,7 +37,7 @@ class World {
     this.lights = createLights();
     this.bases = createBases();
     this.discs = createDiscs();
-    this.player = new SolutionPlayer(createDetailedSolution(numberOfDiscs), this.discs);
+    this.player = new SolutionPlayer([...createDetailedSolution(numberOfDiscs)], this.discs);
 
     const container = options.container;
     while (container.firstChild) container.removeChild(container.firstChild);
