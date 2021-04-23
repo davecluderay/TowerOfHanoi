@@ -1,14 +1,12 @@
 const colors = {
-  redSalsa: 0xf03a47,
-  blueCrayola: 0x3772ff,
-  brightYellowCrayola: 0xf6aa1c,
-  phlox: 0xc04cfd,
-  mediumSpringGreen: 0x71f79f,
-  sunray: 0xedae49,
-  fluorescentBlue: 0x26f0f1,
-  apricot: 0xffc6ac,
-  cyberYellow: 0xffd400,
-  greenRYB: 0x6ab547,
+  darkBlue: 0x0863b5,
+  yellow: 0xfec600,
+  orange: 0xf39100,
+  red: 0xc6002b,
+  purple: 0x954a97,
+  lightBlue: 0x009ee3,
+  green: 0x13a538,
+  pink: 0xf53794,
 };
 
 export const numberOfDiscs = 7;
