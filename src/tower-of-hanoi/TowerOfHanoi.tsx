@@ -5,7 +5,7 @@ export interface PlaybackControls {
   reset(): void;
   play(): void;
   pause(): void;
-  stop(): void;
+  stopAndReset(): void;
   isPlaying(): boolean;
   isPaused(): boolean;
   isStopped(): boolean;

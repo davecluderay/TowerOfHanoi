@@ -70,7 +70,7 @@ class World {
       reset: () => this.player.reset(),
       play: () => this.player.play(),
       pause: () => this.player.pause(),
-      stop: () => this.player.stop(),
+      stopAndReset: () => this.player.stopAndReset(),
       isPlaying: () => this.player.isPlaying(),
       isPaused: () => this.player.isPaused(),
       isStopped: () => this.player.isStopped(),

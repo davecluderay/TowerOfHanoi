@@ -11,7 +11,7 @@ const colors = {
 
 export const numberOfDiscs = 7;
 export const baseBevelSize = 0.1;
-export const baseColor = 0x818aa3;
+export const baseColor = 0x716a93;
 export const baseSpacing = 0.5;
 export const baseThickness = 0.75;
 export const discBevelSize = 0.1;

@@ -30,7 +30,7 @@ class SolutionPlayer {
     this.runState = 'paused';
   }
 
-  public stop(): void {
+  public stopAndReset(): void {
     this.pause();
     this.reset();
     this.runState = 'stopped';

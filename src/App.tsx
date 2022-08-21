@@ -3,12 +3,12 @@ import { PlaybackControls, TowerOfHanoi } from './tower-of-hanoi/TowerOfHanoi';
 
 function App() {
   const controlsRef = useRef<PlaybackControls>();
-  const [runState, setRunState] = useState({ canPlay: true, canPause: false, canStop: false });
+  const [runState, setRunState] = useState({ canPlay: true, canPause: false, canReset: false });
   const applyToRunState = (controls: PlaybackControls | undefined): void =>
     setRunState({
       canPlay: !!controls && !controls.isPlaying(),
       canPause: !!controls && controls.isPlaying(),
-      canStop: !!controls && !controls.isStopped(),
+      canReset: !!controls && !controls.isStopped()
     });
 
   const headerStyle: CSSProperties = {
@@ -64,12 +64,12 @@ function App() {
       <button
         style={buttonStyles}
         onClick={() => {
-          controlsRef.current?.stop();
+          controlsRef.current?.stopAndReset();
           applyToRunState(controlsRef.current);
         }}
-        disabled={!runState.canStop}
+        disabled={!runState.canReset}
       >
-        Stop
+        Reset
       </button>
     </div>
   );
