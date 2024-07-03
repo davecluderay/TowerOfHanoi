@@ -30,7 +30,7 @@ function createInitAnimation(discs: Object3D[], base: number): Animation {
       this.isDone = false;
     }
 
-    public tick(delta: number): void {
+    public tick(_: number): void {
       const x = baseXPositions[this.base - 1];
       this.discs.forEach((disc, index) => {
         disc.position.x = x;

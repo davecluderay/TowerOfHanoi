@@ -11,7 +11,7 @@ export interface PlaybackControls {
   isStopped(): boolean;
 }
 
-const TowerOfHanoi = forwardRef((props: PropsWithoutRef<any>, controlsRef: Ref<PlaybackControls | undefined>) => {
+const TowerOfHanoi = forwardRef((_: PropsWithoutRef<any>, controlsRef: Ref<PlaybackControls | undefined>) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const worldRef = useRef<World | null>(null);
 
@@ -25,7 +25,7 @@ const TowerOfHanoi = forwardRef((props: PropsWithoutRef<any>, controlsRef: Ref<P
 
     world.init().then(
       () => world.start(),
-      (error) => console.log(error)
+      (error) => console.error(error)
     );
 
     worldRef.current = world;
@@ -38,7 +38,7 @@ const TowerOfHanoi = forwardRef((props: PropsWithoutRef<any>, controlsRef: Ref<P
 
   useImperativeHandle(controlsRef, () => worldRef.current?.getPlaybackControls());
 
-  return <div ref={containerRef} style={{ height: '100%', width: '100%' }}></div>;
+  return <div ref={containerRef}></div>;
 });
 
 export { TowerOfHanoi };

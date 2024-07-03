@@ -5,13 +5,17 @@ Implemented with [TypeScript](https://www.typescriptlang.org/) and using [three.
 
 ## Getting Going
 
-First, have yarn installed:
+First, have `pnpm` installed:
 
-`npm install -g yarn`
+`npm install -g pnpm`
+
+To run tests:
+
+`pnpm test`
 
 To run in development:
 
-`yarn start`
+`pnpm dev`
 
 To build:
 

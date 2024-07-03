@@ -5,7 +5,7 @@ function createCamera(): PerspectiveCamera {
   camera.position.set(-3, 20, 60);
 
   Object.assign(camera, {
-    tick: (delta: number) => {},
+    tick: (_: number) => {},
   });
 
   return camera;

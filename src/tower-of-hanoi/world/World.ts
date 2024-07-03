@@ -7,7 +7,7 @@ import { createCameraControls } from './interaction/cameraControls';
 import { createRenderer } from './rendering/renderer';
 import { Resizer } from './interaction/Resizer';
 import { Loop } from './rendering/Loop';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { createDiscs } from './components/disc';
 import { createBases } from './components/base';
 import { createDetailedSolution } from '../solver';

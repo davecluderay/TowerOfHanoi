@@ -1,5 +1,5 @@
 import { Camera, Vector3 } from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { baseHeight, baseXPositions } from '../options';
 
 function createCameraControls(camera: Camera, element: HTMLElement) {
@@ -11,7 +11,7 @@ function createCameraControls(camera: Camera, element: HTMLElement) {
   controls.maxPolarAngle = Math.PI / 2;
 
   Object.assign(controls, {
-    tick: (delta: number) => controls.update(),
+    tick: (_: number) => controls.update(),
   });
 
   const center = new Vector3(baseXPositions[1], baseHeight / 2, 0);
