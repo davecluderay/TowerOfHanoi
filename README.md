@@ -19,4 +19,4 @@ To run in development:
 
 To build:
 
-`yarn build`
+`pnpm build`
